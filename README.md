@@ -2,7 +2,14 @@
 This is our micro-tiny GPT-2 model (😁 we are still learning), built from scratch and inspired by the innovative approaches of Hugging Face Transformers and OpenAI architectures. Developed during our internship at 3D Smart Factory, this model showcases our committed efforts to create an advanced AI solution.
 
 
-![Project Logo](logo.png)
+<div align="center">
+  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/263525109-7872c85c-d387-463f-9477-62704f47ee10.png" width="200" height="200" />
+</div>
+
+
+## NOTE
+
+**Important:** This project involves fine-tuning various GPT-2 family models (small, medium, large, etc.) to develop two distinct chatbots: one for question and answer interactions, and another for context-based question and answer interactions. Additionally, we have implemented a question and answer system based on the core transformer architecture, which was initially used for translation tasks.
 
 ## Table of Contents
 
