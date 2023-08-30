@@ -9,7 +9,7 @@ This is our micro-tiny GPT-2 model (😁 we are still learning), built from scra
 
 ## NOTE
 
-**Important:** This project involves fine-tuning various GPT-2 family models (small, medium, large, etc.) to develop two distinct chatbots: one for question and answer interactions, and another for context-based question and answer interactions. Additionally, we have implemented a question and answer system based on the core transformer architecture, which was initially used for translation tasks.
+**Important:** This project involves fine-tuning various GPT-2 family models (small, medium, large, etc.) to develop two distinct chatbots: one for question and answer interactions [here](https://github.com/benisalla/fine-tune-gpt-2-chatbot) and another for context-based question and answer interactions [here](https://github.com/benisalla/fine-tune-gpt2_on_context_Q-A). Additionally, we have implemented a question and answer system based on the core transformer architecture which was initially used for translation tasks [here](https://github.com/benisalla/chatbot-based-translation-transformer).
 
 ## Table of Contents
 
