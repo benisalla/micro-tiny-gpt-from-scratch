@@ -1,5 +1,5 @@
 # Micro-Tiny GPT-2 Model FROM SCRATCH
-This is our micro-tiny GPT-2 model (😁 we are still learning), built from scratch and inspired by the innovative approaches of Hugging Face Transformers and OpenAI architectures. Developed during our internship at 3D Smart Factory, this model showcases our committed efforts to create an advanced AI solution.
+This is our micro-tiny GPT-2 model (😁 we are still learning), built from scratch and inspired by the innovative approaches of Hugging Face Transformers and OpenAI architectures. Developed during our internship at [3D Smart Factory](https://3dsmartfactory.csit.ma/), this model showcases our committed efforts to create an advanced AI solution.
 
 
 <div align="center">
