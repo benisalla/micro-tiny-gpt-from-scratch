@@ -3,9 +3,9 @@ This is our micro-tiny GPT-2 model (😁 we are still learning), built from scra
 
 
 <div align="center">
-  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/263525109-7872c85c-d387-463f-9477-62704f47ee10.png" width="200" height="200" />
+  <h5>Micro-Tiny-GPT</h5>
+  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/264447768-39a2a1a9-ca80-44cd-9d83-fd1358cb379b.png" width="200" height="200" />
 </div>
-
 
 ## NOTE
 
