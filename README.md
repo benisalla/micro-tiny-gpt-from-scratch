@@ -160,6 +160,5 @@ Let's connect and explore the fascinating world of artificial intelligence toget
 
 <div align="center">
   <h4>enjoy chatting with Your Tiny Bot Buddy 😁</h4>
-  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/270190847-0b3ee23b-c082-483e-9e12-8b15a1b8f0a3.gif
-" width="500" height="300"/>
+  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/270190847-0b3ee23b-c082-483e-9e12-8b15a1b8f0a3.gif" width="500" height="300"/>
 </div>
