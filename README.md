@@ -28,15 +28,19 @@ This is an important notice. It provides additional information or a reminder.
 ## Table of Contents
 
 - [Introduction](#introduction)
-- [Features](#features)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Usage](#usage)
+- [OverView](#overview)
+- [Data](#data)
+- [Background on GPT-2](#background-on-gpt-2)
 - [Model Architecture](#model-architecture)
-- [Contributing](#contributing)
-- [Acknowledgements](#acknowledgements)
-- [License](#license)
+- [Features of this project](#features-of-this-project)
+- [Benefits of Utilizing MT-GPT](#benefits-of-utilizing-mt-gpt)
+- [Training](#training)
+- [Inference](#inference)
+- [Contributors](#contributors)
+- [Contact Us](#contact-us)
+- [About Me](#about-me)
+
+
 
 
 
@@ -99,18 +103,46 @@ We combined approximately 5 million files from the OpenWebText dataset, roughly 
 ```
 
 2. Following established conventions for dataset splitting, we divided the data into training and validation sets, allocating 80% for training and 10% for validation.
-```
-
-
-```
-
-
-
 3. To optimize data management and efficiency, we stored the data as a binary stream in the 'train.bin' and 'val.bin' files.
+```txt files to bin files
+data_dir = "your data path"
+
+for prefix in [list of folers in case you are using openwebtext]:
+    f_dir = "dest dir"
+    for idx, filename in enumerate(os.listdir(f_dir)):
+        src_file = os.path.join(f_dir, f'f{idx+1}.txt')
+        with open(src_file, 'r', encoding='utf-8') as f:
+            content = f.read()
+        dset = tokenizing(content)
+        content = None
+        arr_len = np.sum(dset['len'], dtype=np.uint64)
+        dest_file = os.path.join(f"{data_dir}/file_{prefix}/", f'f{idx+1}.bin')
+        dtype = np.uint16 
+
+        arr = np.memmap(dest_file, dtype=dtype, mode='w+', shape=(arr_len,))    
+        arr[0:arr_len] = np.array(dset['ids'])
+        arr.flush()
+        print(f"✅ f[{idx+1}].txt saved successfully to f{idx+1}.bin")
+```
+
+```Combine all bins to on large bin (that is silly but i don't have resources)
+
+for split_name in ["test", "val", "train"]:
+    data_dir = "your data dir"
+    f_dir = "dir to where you want to put your data"
+    with open(os.path.join(f_dir, f'{split_name}.bin'), 'wb') as outf:
+        for idx, filename in enumerate(os.listdir(data_dir)):
+            src_path = os.path.join(f"{data_dir}", filename)
+            with open(src_path, 'rb') as input_file:
+                file_contents = input_file.read()
+                outf.write(file_contents)
+    print(f"Concatenation of {split_name} complete.")
+
 ```
 
 
-```
+
+
 
 Our dataset is currently accessible on Kaggle:
 
