@@ -96,9 +96,10 @@ Due to resource constraints, it is important to note that we trained GPT-2 on on
 
 We combined approximately 5 million files from the OpenWebText dataset, roughly equivalent to a quarter of the entire OpenWebText corpus. Subsequently, we performed the following steps:
 
-1. We used the GPT-2 tokenizer, also known as "r50k," to tokenize the dataset.
+1. We used the GPT-2 tokenizer, also known as "r50k_base" to tokenize the dataset.
 ```
-
+import tiktoken
+tokenizer = tiktoken.get_encoding("r50k_base")
 
 ```
 
