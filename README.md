@@ -89,7 +89,7 @@ OpenWebText2 is an enhanced version of the original OpenWebText corpus, covering
   <a href="https://skylion007.github.io/OpenWebTextCorpus/">
     <h5>OpenWebText</h5>
   </a>
-  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/273406287-b908e1a2-8650-48fd-a54e-d7ed79aed037.png" width="120" height="80" />
+  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/273406287-b908e1a2-8650-48fd-a54e-d7ed79aed037.png" width="300" height="150" />
 </div>
 
 
@@ -158,7 +158,7 @@ Our dataset is currently accessible on Kaggle:
   <a href="https://www.kaggle.com/datasets/benallaismail/gpt-data">
     <h5>Quarter of OpenWebText by Ben Alla Ismail</h5>
   </a>
-  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/273406286-22c3d2ab-df41-4c49-981f-ae153445ce5b.jpeg" width="200" height="200" />
+  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/273406286-22c3d2ab-df41-4c49-981f-ae153445ce5b.jpeg" width="600" height="300" />
 </div>
 
 
@@ -178,7 +178,7 @@ The Generative Pre-trained Transformer 2 (GPT-2), developed by OpenAI, is the se
 
 <div align="center">
   <h5>GPT-2 Model</h5>
-  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/273406289-a66928b2-b651-4fb5-81b2-f9429685d9d0.jpg" width="200" height="200" />
+  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/273406289-a66928b2-b651-4fb5-81b2-f9429685d9d0.jpg" width="600" height="300" />
 </div>
 
 
@@ -189,7 +189,7 @@ There is a family of GPT-2 models; below, we can see the pretrained GPT-2 model 
 
 <div align="center">
   <h5>GPT-2 Model Family</h5>
-  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/273406288-e0dc48f8-a5e1-4807-8184-39ca3e2a88c5.jpg" width="200" height="200" />
+  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/273406288-e0dc48f8-a5e1-4807-8184-39ca3e2a88c5.jpg" width="700" height="300" />
 </div>
 
 
@@ -212,7 +212,7 @@ The architecture of GPT-2, a groundbreaking language model, represents a notable
 
 <div align="center">
   <h5>GPT-2 Relationship with Transformers</h5>
-  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/273406295-de6880cf-7d77-4b16-bcb5-d58b950e3404.jpg" width="200" height="200" />
+  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/273406295-de6880cf-7d77-4b16-bcb5-d58b950e3404.jpg" width="700" height="300" />
 </div>
 
 
@@ -222,7 +222,7 @@ This led to models with exceptionally high stacks of transformer blocks and mass
 
 <div align="center">
   <h5>Full GPT-2 Architecture</h5>
-  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/273406294-83845cfb-f442-478f-9993-3412225dabb7.png" width="100" height="400" />
+  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/273406294-83845cfb-f442-478f-9993-3412225dabb7.png" width="350" height="600" />
 </div>
 
 
@@ -277,7 +277,7 @@ Within the realm of Micro-Tiny GPT-2 notebook, there exists a multitude of advan
 
 <div align="center">
   <h4>Loss function</h4>
-  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/273406292-81226d87-8166-4f6d-b913-baa419f794ff.png" width="700" height="300"/>
+  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/273406292-81226d87-8166-4f6d-b913-baa419f794ff.png" width="600" height="300"/>
 </div>
 
 
@@ -290,7 +290,7 @@ Within the realm of Micro-Tiny GPT-2 notebook, there exists a multitude of advan
 
 <div align="center">
   <h4>some samples after training the model</h4>
-  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/273406291-a362a3cf-3886-40d8-a1cc-71f448616a22.jpeg" width="700" height="400"/>
+  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/273406291-a362a3cf-3886-40d8-a1cc-71f448616a22.jpeg" width="700" height="300"/>
 </div>
 
 
