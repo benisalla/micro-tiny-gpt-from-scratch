@@ -38,9 +38,86 @@ This is an important notice. It provides additional information or a reminder.
 - [Acknowledgements](#acknowledgements)
 - [License](#license)
 
-## Introduction
 
+
+
+# Introduction
 Welcome to the Micro-Tiny GPT-2 Model repository! This project is an exploration into building a compact GPT-2 model from scratch, taking inspiration from the Hugging Face Transformers and OpenAI architectures. Developed during an internship at 3D Smart Factory, this model represents our dedication to creating advanced AI solutions despite our learning phase.
+
+
+
+
+
+
+# OverView
+
+the Following Readme file offers a thorough exploration of the meticulous process involved in building the foundational GPT-2 model from its inception. Our journey covers vital phases, including data collection, model architecture design, training protocols, and practical applications. Throughout this chapter, we illuminate the intricate nature of developing such a potent language model and its profound potential across various applications in the field of natural language processing.
+
+
+
+
+
+
+
+
+
+## Data
+
+### WebText (OpenWebTextCorpus)
+
+To train GPT-2, OpenAI needed a substantial corpus of 40 GB of high-quality text. While Common Crawl provided the necessary scale for modern language models, its quality was often inconsistent. Manually curating data from Common Crawl was an option but a costly one. Fortunately, Reddit provided a decentralized curation approach by design, proving to be a crucial innovation for creating the WebText dataset.
+
+The WebText generation process can be summarized as follows:
+
+1. Retrieve URLs of all Reddit submissions until December 2017 with a score of 3 or higher.
+2. Deduplicate retrieved content based on URLs.
+3. Exclude Wikipedia content, as OpenAI already had a separate Wikipedia dataset.
+4. Further deduplicate the remaining content using an undisclosed "heuristic" cleaning method, including the removal of non-English web pages.
+
+Neither the resulting corpus nor the source code for its generation was made public, which later inspired Aaron Gokaslan and Vanya Cohen to create the OpenWebText corpus.
+
+### OpenWebText
+
+OpenWebText2 is an enhanced version of the original OpenWebText corpus, covering all Reddit submissions from 2005 to April 2020, with additional months becoming available after the publication of corresponding PushShift backup files.
+
+![OpenWebText](images/openwebtext.png)
+
+Due to resource constraints, it is important to note that we trained GPT-2 on only a quarter of the OpenWebText dataset. This limitation in training data was necessary to optimize computational resources while still achieving significant language model performance.
+
+
+
+
+
+### Data Preprocessing
+
+We combined approximately 5 million files from the OpenWebText dataset, roughly equivalent to a quarter of the entire OpenWebText corpus. Subsequently, we performed the following steps:
+
+1. We used the GPT-2 tokenizer, also known as "r50k," to tokenize the dataset.
+```
+
+
+```
+
+2. Following established conventions for dataset splitting, we divided the data into training and validation sets, allocating 80% for training and 10% for validation.
+```
+
+
+```
+
+
+
+3. To optimize data management and efficiency, we stored the data as a binary stream in the 'train.bin' and 'val.bin' files.
+```
+
+
+```
+
+Our dataset is currently accessible on Kaggle:
+
+![OpenWebText by Ben Alla Ismail](images/ben-alla-openwebtext.jpeg)
+
+
+
 
 
 
@@ -69,7 +146,31 @@ There is a family of GPT-2 models; below, we can see the pretrained GPT-2 model 
 
 
 
-## Features
+
+
+
+
+## Model Architecture
+
+The architecture of GPT-2, a groundbreaking language model, represents a notable evolution of deep learning-based transformer models. Initially, it followed the traditional transformer architecture with both encoder and decoder components, but subsequent research simplified the design by removing one.
+
+![GPT-2 Relationship with Transformers](images/gpt-relationship-with-bert-transformers.jpg)
+
+This led to models with exceptionally high stacks of transformer blocks and massive volumes of training data, often requiring significant computational resources and costs. This chapter explores the architecture of GPT-2 and its relationship with transformers, highlighting innovative developments that shaped its evolution into a powerful language model.
+
+![Full GPT-2 Architecture](images/Full_GPT_architecture.png)
+
+
+
+
+
+
+
+
+
+
+
+## Features of this project
 
 - **Micro-Tiny Scale:** This GPT-2 model is intentionally designed to be on a micro-tiny scale, showcasing our learning journey and commitment to innovation.
 
@@ -77,66 +178,53 @@ There is a family of GPT-2 models; below, we can see the pretrained GPT-2 model 
 
 - **Internship Project:** Developed during our internship at 3D Smart Factory, this project reflects real-world experience and hands-on learning.
 
-## Getting Started
-
-### Prerequisites
-
-- Python 3.x
-- TensorFlow [Version]
-- NumPy [Version]
-
-## Installation
-
-1. Clone the repository:
-
-   ```sh
-   git clone https://github.com/yourusername/micro-tiny-gpt2.git
-   cd micro-tiny-gpt2
-    pip install -r requirements.txt
-   ```
 
 
-### Usage
 
-## Usage
 
-To use the Micro-Tiny GPT-2 model, follow these steps:
 
-1. [Additional usage instructions or code snippets if necessary]
 
-2. [Example usage scenarios or code snippets]
 
-## Model Architecture
 
-The Micro-Tiny GPT-2 model is built with simplicity and learning in mind. While it may not match the scale of larger models, it represents our foundational steps towards understanding complex AI architectures.
 
-[Include a brief explanation of your model's architecture, design choices, and any notable components.]
 
-## Contributing
+## Benefits of Utilizing MT-GPT
 
-We welcome contributions from the community to enhance this project. To contribute, please follow these steps:
+Within the realm of Micro-Tiny GPT-2 notebook, there exists a multitude of advantageous applications:
 
-1. Fork the repository.
-2. Create a new branch.
-3. Make your enhancements.
-4. Test thoroughly.
-5. Submit a pull request.
+1. Enhanced Textual Performance: Leveraging the ability to train MT-GPT on larger datasets can significantly improve its text generation capabilities.
 
-## Acknowledgements
+2. ABC Model Integration: You will find a demonstrative example of integrating MT-GPT with the ABC model in my GitHub repository, showcasing its adaptability to diverse frameworks.
 
-We would like to express our gratitude to [Mentor's Name] at 3D Smart Factory for guiding us throughout the development of this project.
+3. Voice Training Capabilities: MT-GPT can be trained on voice data, opening up opportunities for voice-related applications.
 
-## Acknowledgements
+4. Sequential Problem Solving: The versatility of MT-GPT extends to addressing various sequential challenges within the field of AI.
 
-We would like to express our gratitude to [Mentor's Name] at 3D Smart Factory for guiding us throughout the development of this project.
+
+
+
+
+
+
+## Training
+
+<div align="center">
+  <h4>some examples</h4>
+  <img src="" width="700" height="300"/>
+</div>
+
+
+
 
 
 
 
 ## Inference
 
-Upon the conclusion of the fine-tuning process, the model is poised to engage in inference, crafting answers from a contextual backdrop. Provide a succinct yet comprehensive guide on effectively leveraging the trained model for insightful question answering.
-
+<div align="center">
+  <h4>some examples</h4>
+  <img src="" width="700" height="300"/>
+</div>
 
 
 
@@ -150,8 +238,8 @@ Acknowledge the significant contributions of your colleagues, attributing specif
 - [Ben Alla Ismail (me 😃)](https://github.com/benisalla)
 - [Agrat Mohammed](https://github.com/agrat)
 - [Mhaoui Siham](https://github.com/siham)
-- [X Souhayle](https://github.com/yourusername)
-- [X Daoudi](https://github.com/yourusername)
+- [Souhayle ou-aabi](https://github.com/Souhayle-ou-aabi)
+- [Daoudi Ayoub](https://github.com/Daoudi-Ayoub)
 
 
 
@@ -197,100 +285,3 @@ Let's connect and explore the fascinating world of artificial intelligence toget
   <h4>You are about to witness some pure magic ✨🎩 !! Ta-da!</h4>
   <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/270190847-0b3ee23b-c082-483e-9e12-8b15a1b8f0a3.gif" width="500" height="300"/>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# OverView
-
-This chapter provides an in-depth exploration of the meticulous process involved in constructing the foundational GPT-2 model from its inception. Our journey encompasses crucial phases, including data collection, model architecture design, training protocols, and practical applications. Throughout this chapter, we shed light on the intricate nature of developing such a powerful language model and the profound potential it holds for various applications in the field of natural language processing.
-
-Welcome to the Micro-Tiny GPT-2 Model repository! This project is an exploration into building a compact GPT-2 model from scratch, taking inspiration from the Hugging Face Transformers and OpenAI architectures. Developed during an internship at 3D Smart Factory, this model represents our dedication to creating advanced AI solutions despite our learning phase.
-
-
-
-
-
-
-
-
-
-
-
-## Data Preparation
-
-### WebText (OpenWebTextCorpus)
-
-To train GPT-2, OpenAI needed a substantial corpus of 40 GB of high-quality text. While Common Crawl provided the necessary scale for modern language models, its quality was often inconsistent. Manually curating data from Common Crawl was an option but a costly one. Fortunately, Reddit provided a decentralized curation approach by design, proving to be a crucial innovation for creating the WebText dataset.
-
-The WebText generation process can be summarized as follows:
-
-1. Retrieve URLs of all Reddit submissions until December 2017 with a score of 3 or higher.
-2. Deduplicate retrieved content based on URLs.
-3. Exclude Wikipedia content, as OpenAI already had a separate Wikipedia dataset.
-4. Further deduplicate the remaining content using an undisclosed "heuristic" cleaning method, including the removal of non-English web pages.
-
-Neither the resulting corpus nor the source code for its generation was made public, which later inspired Aaron Gokaslan and Vanya Cohen to create the OpenWebText corpus.
-
-### OpenWebText
-
-OpenWebText2 is an enhanced version of the original OpenWebText corpus, covering all Reddit submissions from 2005 to April 2020, with additional months becoming available after the publication of corresponding PushShift backup files.
-
-![OpenWebText](images/openwebtext.png)
-
-Due to resource constraints, it is important to note that we trained GPT-2 on only a quarter of the OpenWebText dataset. This limitation in training data was necessary to optimize computational resources while still achieving significant language model performance.
-
-### Data Preprocessing
-
-We combined approximately 5 million files from the OpenWebText dataset, roughly equivalent to a quarter of the entire OpenWebText corpus. Subsequently, we performed the following steps:
-
-1. We used the GPT-2 tokenizer, also known as "r50k," to tokenize the dataset.
-2. Following established conventions for dataset splitting, we divided the data into training and validation sets, allocating 80% for training and 10% for validation.
-3. To optimize data management and efficiency, we stored the data as a binary stream in the 'train.bin' and 'val.bin' files.
-
-Our dataset is currently accessible on Kaggle:
-
-![OpenWebText by Ben Alla Ismail](images/ben-alla-openwebtext.jpeg)
-
-
-
-
-
-
-
-
-
-
-## Model Architecture
-
-The architecture of GPT-2, a groundbreaking language model, represents a notable evolution of deep learning-based transformer models. Initially, it followed the traditional transformer architecture with both encoder and decoder components, but subsequent research simplified the design by removing one.
-
-![GPT-2 Relationship with Transformers](images/gpt-relationship-with-bert-transformers.jpg)
-
-This led to models with exceptionally high stacks of transformer blocks and massive volumes of training data, often requiring significant computational resources and costs. This chapter explores the architecture of GPT-2 and its relationship with transformers, highlighting innovative developments that shaped its evolution into a powerful language model.
-
-![Full GPT-2 Architecture](images/Full_GPT_architecture.png)
