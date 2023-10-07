@@ -84,7 +84,14 @@ Neither the resulting corpus nor the source code for its generation was made pub
 
 OpenWebText2 is an enhanced version of the original OpenWebText corpus, covering all Reddit submissions from 2005 to April 2020, with additional months becoming available after the publication of corresponding PushShift backup files.
 
-![OpenWebText](images/openwebtext.png)
+
+<div align="center">
+  <a href="https://skylion007.github.io/OpenWebTextCorpus/">
+    <h5>OpenWebText</h5>
+  </a>
+  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/273406287-b908e1a2-8650-48fd-a54e-d7ed79aed037.png" width="120" height="80" />
+</div>
+
 
 Due to resource constraints, it is important to note that we trained GPT-2 on only a quarter of the OpenWebText dataset. This limitation in training data was necessary to optimize computational resources while still achieving significant language model performance.
 
@@ -147,7 +154,13 @@ for split_name in ["test", "val", "train"]:
 
 Our dataset is currently accessible on Kaggle:
 
-![OpenWebText by Ben Alla Ismail](images/ben-alla-openwebtext.jpeg)
+<div align="center">
+  <a href="https://www.kaggle.com/datasets/benallaismail/gpt-data">
+    <h5>Quarter of OpenWebText by Ben Alla Ismail</h5>
+  </a>
+  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/273406286-22c3d2ab-df41-4c49-981f-ae153445ce5b.jpeg" width="200" height="200" />
+</div>
+
 
 
 
@@ -162,13 +175,23 @@ Our dataset is currently accessible on Kaggle:
 
 The Generative Pre-trained Transformer 2 (GPT-2), developed by OpenAI, is the second installment in their fundamental series of GPT models. GPT-2 was pretrained on the BookCorpus dataset, consisting of over 7,000 unpublished fiction books of various genres, and then fine-tuned on a dataset comprising 8 million web pages. It was partially unveiled in February 2019, followed by the full release of the 1.5 billion parameter model on November 5, 2019.
 
-![GPT-2 Model](images/gpt-2.jpg)
+
+<div align="center">
+  <h5>GPT-2 Model</h5>
+  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/273406289-a66928b2-b651-4fb5-81b2-f9429685d9d0.jpg" width="200" height="200" />
+</div>
+
 
 GPT-2 represents a "direct scale-up" from its predecessor, GPT-1, with a tenfold increase in both the number of parameters and the size of the training dataset. This versatile model owes its ability to perform various tasks to its intrinsic capacity to accurately predict the next element in a sequence. This predictive capability enables GPT-2 to accomplish tasks such as text translation, answering questions based on textual content, summarizing text passages, and generating text that can sometimes closely resemble human style. However, it may exhibit repetitive or nonsensical behavior when generating long passages.
 
 There is a family of GPT-2 models; below, we can see the pretrained GPT-2 model family:
 
-![GPT-2 Model Family](images/gpt-2-family.jpg)
+
+<div align="center">
+  <h5>GPT-2 Model Family</h5>
+  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/273406288-e0dc48f8-a5e1-4807-8184-39ca3e2a88c5.jpg" width="200" height="200" />
+</div>
+
 
 
 
@@ -187,11 +210,22 @@ There is a family of GPT-2 models; below, we can see the pretrained GPT-2 model 
 
 The architecture of GPT-2, a groundbreaking language model, represents a notable evolution of deep learning-based transformer models. Initially, it followed the traditional transformer architecture with both encoder and decoder components, but subsequent research simplified the design by removing one.
 
-![GPT-2 Relationship with Transformers](images/gpt-relationship-with-bert-transformers.jpg)
+<div align="center">
+  <h5>GPT-2 Relationship with Transformers</h5>
+  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/273406295-de6880cf-7d77-4b16-bcb5-d58b950e3404.jpg" width="200" height="200" />
+</div>
+
+
 
 This led to models with exceptionally high stacks of transformer blocks and massive volumes of training data, often requiring significant computational resources and costs. This chapter explores the architecture of GPT-2 and its relationship with transformers, highlighting innovative developments that shaped its evolution into a powerful language model.
 
-![Full GPT-2 Architecture](images/Full_GPT_architecture.png)
+
+<div align="center">
+  <h5>Full GPT-2 Architecture</h5>
+  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/273406294-83845cfb-f442-478f-9993-3412225dabb7.png" width="100" height="400" />
+</div>
+
+
 
 
 
@@ -242,8 +276,8 @@ Within the realm of Micro-Tiny GPT-2 notebook, there exists a multitude of advan
 ## Training
 
 <div align="center">
-  <h4>some examples</h4>
-  <img src="" width="700" height="300"/>
+  <h4>Loss function</h4>
+  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/273406292-81226d87-8166-4f6d-b913-baa419f794ff.png" width="700" height="300"/>
 </div>
 
 
@@ -255,8 +289,8 @@ Within the realm of Micro-Tiny GPT-2 notebook, there exists a multitude of advan
 ## Inference
 
 <div align="center">
-  <h4>some examples</h4>
-  <img src="" width="700" height="300"/>
+  <h4>some samples after training the model</h4>
+  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/273406291-a362a3cf-3886-40d8-a1cc-71f448616a22.jpeg" width="700" height="400"/>
 </div>
 
 
