@@ -269,6 +269,17 @@ Within the realm of Micro-Tiny GPT-2 notebook, there exists a multitude of advan
 
 
 
+## Explanatory Videos
+
+I've created explanatory videos to help you understand the intricate link between the architecture and the code, as it might not be immediately obvious.
+
+<div align="center">
+  <a href="https://drive.google.com/file/d/14V5PbIBW3fgVWAvB1yux_lGHL6ULtdcD/view?usp=drive_link">
+    <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/288115000-0db1ec7c-06a9-4801-8ae0-900b2c0382e2.png" width="700" height="300" alt="Explanatory Video"/>
+  </a>
+</div>
+
+
 
 
 
