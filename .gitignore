@@ -1,0 +1,26 @@
+# .gitignore
+
+# Ignore Python bytecode files and cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore virtual environment directory
+venv/
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore Visual Studio Code directory
+.vscode/
+
+# Ignore files and directories generated during training
+Model/__pycache__/
+Utils/__pycache__/
+
+# Ignore binary files
+*.bin
+
+# Ignore JSON files
+*.json
