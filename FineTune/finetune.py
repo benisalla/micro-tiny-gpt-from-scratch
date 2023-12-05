@@ -3,8 +3,7 @@ import time
 from Data.BatchLoader import BatchLoader
 from Utils.Config import TConfig
 from Utils.Initializer import Initializer
-from Utils.Utils import save_checkpoints
-
+from Utils.Utils import save_checkpoints, evaluate_model
 
 # initializing
 model, tokenizer, optimizer, scaler, model_args, device, ctx, iter_num, best_val_loss = Initializer()
@@ -29,26 +28,19 @@ while True:
 
     # fetch next batch
     x_batch, y_batch = next(train_loader)
-    x_batch = x_batch.to(device)
-    y_batch = y_batch.to(device)
 
-#     iter_num, best_val_loss = evaluate_model(iter_num,
-#                                              model,
-#                                              optimizer,
-#                                              model_args,
-#                                              eval_interval,
-#                                              best_val_loss,
-#                                              save_ckpt_path,
-#                                              save_checkpoint)
-
+    iter_num, best_val_loss = evaluate_model(iter_num,
+                                             model,
+                                             train_loader,
+                                             val_loader,
+                                             best_val_loss,
+                                             isFT=True)
     for micro_step in range(num_steps):
         with ctx:
             logits , loss = model(x_batch, y_batch)
             loss = loss / num_steps
 
         x_batch, y_batch = next(train_loader)
-        x_batch = x_batch.to(device)
-        y_batch = y_batch.to(device)
         scaler.scale(loss).backward()
 
     scaler.step(optimizer)

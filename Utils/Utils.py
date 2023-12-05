@@ -21,7 +21,8 @@ def estimate_loss(model,
                   device,
                   train_data,
                   val_data,
-                  ctx=None):
+                  ctx=None,
+                  isFT=False):
     eval_iters = TConfig.eval_iters
     out = {}
     model.eval()
@@ -29,7 +30,7 @@ def estimate_loss(model,
     for split in ['train', 'val']:
         losses = torch.zeros(eval_iters)
         for k in range(eval_iters):
-            X, Y = get_batch(data_dict[split], device)
+            X, Y = next(data_dict[split]) if isFT else get_batch(data_dict[split], device)
             with ctx:
                 logits, loss = model(X, Y)
             losses[k] = loss.item()
@@ -39,18 +40,14 @@ def estimate_loss(model,
 
 
 def get_lr(iter):
-    min_lr = TConfig.min_lr
-    lr = TConfig.learning_rate
-    w = TConfig.warmup_iters
-    lr_di = TConfig.lr_decay_iters
-    if iter < w:
-        return lr * iter / w
-    if iter > lr_di:
-        return min_lr
-    decay_ratio = (iter - w) / (lr_di - w)
+    if iter < TConfig.warmup_iters:
+        return TConfig.learning_rate  * iter / TConfig.warmup_iters
+    if iter > TConfig.lr_decay_iters:
+        return TConfig.min_lr
+    decay_ratio = (iter - TConfig.warmup_iters) / (TConfig.lr_decay_iters - TConfig.warmup_iters)
     assert 0 <= decay_ratio <= 1
     coeff = 0.5 * (1.0 + math.cos(math.pi * decay_ratio))
-    return min_lr + coeff * (lr - min_lr)
+    return TConfig.min_lr + coeff * (TConfig.learning_rate  - TConfig.min_lr)
 
 
 def save_checkpoints(model,
@@ -69,9 +66,9 @@ def save_checkpoints(model,
     torch.save(checkpoint, TConfig.save_ckpt_path)
 
 
-def evaluate_model(iter_num, model, train_data, val_data, device, ctx, best_val_loss):
+def evaluate_model(iter_num, model, train_dt, val_dt, device, ctx, best_val_loss, isFT=False):
     if iter_num % TConfig.eval_interval == 0:
-        losses = estimate_loss(model, device, train_data, val_data, ctx)
+        losses = estimate_loss(model, device, train_dt, val_dt, ctx, isFT)
         print(f"Val-Step {iter_num}: train loss {losses['train']:.4f}, val loss {losses['val']:.4f}")
     return iter_num, best_val_loss
 

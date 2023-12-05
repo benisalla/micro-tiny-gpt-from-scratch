@@ -28,10 +28,11 @@ class BatchLoader(object):
         create_batches: Create batches from the preprocessed data.
     """
 
-    def __init__(self, data_folder, split, tokenizer, toks_in_batch):
+    def __init__(self, data_folder, split, tokenizer, toks_in_batch, device="cpu"):
         self.toks_in_batch = toks_in_batch
         self.training = (split == "val")
         self.tokenizer = tokenizer
+        self.device = device
 
         # Load Split and transform to list of <s>txt<q>txt<a>txt<e>
         with open(f"{data_folder}/{split}.json", 'r', encoding='utf-8') as json_file:
@@ -85,4 +86,7 @@ class BatchLoader(object):
                                  batch_first=True,
                                  padding_value=self.tokenizer.pad_token_id)
 
-        return input_ids[:, 0:-1], input_ids[:, 1:]
+        x_batch = input_ids[:, 0:-1].to(self.device)
+        y_batch = input_ids[:, 1:].to(self.device)
+
+        return x_batch, y_batch

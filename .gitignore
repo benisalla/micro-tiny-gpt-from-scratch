@@ -5,6 +5,9 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+*.bin
+*.json
+*.pt
 
 # Ignore virtual environment directory
 venv/
@@ -18,9 +21,3 @@ venv/
 # Ignore files and directories generated during training
 Model/__pycache__/
 Utils/__pycache__/
-
-# Ignore binary files
-*.bin
-
-# Ignore JSON files
-*.json
