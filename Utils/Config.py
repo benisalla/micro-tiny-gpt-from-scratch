@@ -14,9 +14,9 @@ class TConfig:
     n_layer: int = 2  # 12
     n_head: int = 12
     n_embd: int = 768
-    drop_rate: float = 0.0
+    drop_rate: float = 0.0      # change to in fine-tuning 0.1 (prevent it from learning too much)
     bias: bool = True
-    learning_rate: float = 6e-4
+    learning_rate: float = 6e-4 # change this to 3e-5 in fine-tuning stage
     max_iters: int = 600000
     weight_decay: float = 1e-1
     beta1: float = 0.9
