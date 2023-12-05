@@ -34,6 +34,7 @@ This is an important notice. It provides additional information or a reminder.
 - [Model Architecture](#model-architecture)
 - [Features of this project](#features-of-this-project)
 - [Benefits of Utilizing MT-GPT](#benefits-of-utilizing-mt-gpt)
+- [Explanatory Videos](#explanatory)
 - [Training](#training)
 - [Inference](#inference)
 - [Contributors](#contributors)
