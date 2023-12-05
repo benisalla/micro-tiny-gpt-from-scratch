@@ -37,7 +37,7 @@ class MTGPT(nn.Module):
 
         self.lm_head = nn.Linear(config.n_embd, config.vocab_size, bias=False)
         self.transformer.wte.weight = self.lm_head.weight
-        self.apply(self._init_weights)
+        self.apply(self.__init_weights__)
         for param_name, param in self.named_parameters():
             if param_name.endswith('c_proj.weight'):
                 torch.nn.init.normal_(param, mean=0.0, std=0.02 / math.sqrt(2 * config.n_layer))
@@ -48,7 +48,7 @@ class MTGPT(nn.Module):
             n_params -= self.transformer.wpe.weight.numel()
         return n_params
 
-    def _init_weights(self, module):
+    def __init_weights__(self, module):
         if isinstance(module, nn.Linear):
             torch.nn.init.normal_(module.weight, mean=0.0, std=0.02)
             if module.bias is not None:
@@ -102,12 +102,13 @@ class MTGPT(nn.Module):
             'gpt2-xl': dict(n_layer=48, n_head=25, n_embd=1600),
         }[model_type]
 
-        print(f"GPT: vocab_size={len(tokenizer)}, block_size=1024, bias=True")
-        config_args['vocab_size'] = len(tokenizer)
+        print(f"New: vocab_size=50264, block_size=1024, bias=True")
+        config_args['vocab_size'] = 50264
         config_args['block_size'] = 1024
         config_args['bias'] = True
 
         if 'dropout' in override_args:
+            print(f"Overriding dropout rate to {override_args['dropout']}")
             config_args['dropout'] = override_args['dropout']
 
         config = Config(**config_args)
@@ -117,21 +118,37 @@ class MTGPT(nn.Module):
         sd_keys = [k for k in sd_keys if not k.endswith('.attn.bias')]
 
         # model configuration to which we add the special tokens
-        config = AutoConfig.from_pretrained('gpt2',
-                                            bos_token_id=tokenizer.bos_token_id,
-                                            eos_token_id=tokenizer.eos_token_id,
-                                            pad_token_id=tokenizer.pad_token_id,
-                                            output_hidden_states=False)
+        pre_config = AutoConfig.from_pretrained('gpt2',
+                                                bos_token_id=tokenizer.bos_token_id,
+                                                eos_token_id=tokenizer.eos_token_id,
+                                                pad_token_id=tokenizer.pad_token_id,
+                                                output_hidden_states=False)
 
         # we load the pre-trained model with custom settings
-        model_hf = GPT2LMHeadModel.from_pretrained('gpt2')  # , config=config)
+        model_hf = GPT2LMHeadModel.from_pretrained('gpt2', config=pre_config)
+
+        # to ensure better performance: increase pad to multiple of 8
+        pad_mul = 8  # in our case we have added less than 8
 
         # model embedding resizing
-        model_hf.resize_token_embeddings(len(tokenizer))
+        model_hf.resize_token_embeddings(len(tokenizer), pad_to_multiple_of=pad_mul)
 
-        # change the weights of the new tokens (make them very small)
-        # new_weights = torch.cat([model_hf.lm_head.weight[:-8, :], torch.rand(8, model_hf.lm_head.weight.shape[1]) - 10])
-        # model_hf.lm_head.weight = torch.nn.Parameter(new_weights)
+        # new tok embeds ~ N(old tok embeds)
+        params_hf = model_hf.state_dict()
+        old_embeds = params_hf['transformer.wte.weight']
+        true_embeds = old_embeds[:-pad_mul, :]
+        # build the normal distributor
+        avg = torch.mean(true_embeds, dim=0)
+        dof = true_embeds.size()[0] - 1
+        cov = ((true_embeds - avg).T @ (true_embeds - avg)) / dof
+        dist = torch.distributions.multivariate_normal.MultivariateNormal(avg, covariance_matrix=1e-5 * cov)
+        # create tok_embeds as samples from this distribution
+        new_embeds = torch.stack(tuple((dist.sample() for _ in range(pad_mul))), dim=0)
+        old_embeds[-pad_mul:, :] = new_embeds
+        params_hf['transformer.wte.weight'][-pad_mul:, :] = new_embeds
+        model_hf.load_state_dict(params_hf)
+
+        # pre-trained model params
         sd_hf = model_hf.state_dict()
 
         sd_keys_hf = sd_hf.keys()

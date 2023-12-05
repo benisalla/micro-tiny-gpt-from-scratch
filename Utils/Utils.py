@@ -91,3 +91,14 @@ def create_tokenizer(ttype):
     tokenizer.add_special_tokens(spe_tokens_dict)
 
     return tokenizer
+
+
+def answer_me(context, question, model, tokenizer, device="cpu",
+              temperature=1.0, top_k=80):
+    tokens = torch.tensor(tokenizer.encode(f"<sost> {context} <ques> {question} <ans>"))
+    tokens = torch.unsqueeze(tokens, dim=0).to(device)
+    answer = model.generate(tokens, max_new_tokens=1, temperature=temperature, top_k=top_k)
+    answer = tokenizer.decode(answer[0]).split("<ans>")[1].split("<eost>")[0].strip()
+    answer = answer.split("<pad>")[0].strip()
+
+    return answer

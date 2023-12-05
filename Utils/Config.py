@@ -3,16 +3,17 @@ from dataclasses import dataclass
 
 @dataclass
 class TConfig:
+    toks_per_batch: int = 6000
     eval_interval: int = 20
     log_interval: int = 1
-    eval_iters: int = 1 #200
-    num_steps: int = 1 #200
+    eval_iters: int = 200
+    num_steps: int = 200
     batch_size: int = 2
     block_size: int = 1024
     vocab_size: int = 50304
     n_layer: int = 2  # 12
-    n_head: int = 4 #12
-    n_embd: int = 32 #768
+    n_head: int = 12
+    n_embd: int = 768
     drop_rate: float = 0.0
     bias: bool = True
     learning_rate: float = 6e-4
@@ -28,7 +29,7 @@ class TConfig:
     compile: bool = False
 
     # could be "scratch", "resume", "GPT2 family"
-    init_from: str = "scratch"
+    init_from: str = "gpt2"
 
     # directories
     data_dir: str = "./Data"

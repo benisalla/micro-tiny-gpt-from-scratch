@@ -32,10 +32,8 @@ while True:
     for param_group in optimizer.param_groups:
         param_group['lr'] = lr
 
-    # evaluation (Train / val)
     iter_num, best_val_loss = evaluate_model(iter_num, model, train_data, val_data, device, ctx, best_val_loss)
 
-    # forward -> backward -> optimizing
     for micro_step in range(num_steps):
         with ctx:
             _, loss = model(X, Y)
@@ -44,36 +42,25 @@ while True:
         X, Y = get_batch(train_data, device)
         scaler.scale(loss).backward()
 
-    # clip the gradient
     if grad_clip != 0.0:
         scaler.unscale_(optimizer)
         torch.nn.utils.clip_grad_norm_(model.parameters(), grad_clip)
 
-    # step the optimizer and scaler if training in fp16
     scaler.step(optimizer)
     scaler.update()
-
-    # free gradients memory
     optimizer.zero_grad(set_to_none=True)
 
-    # timing and logging
     t1 = time.time()
     dt = t1 - t0
     t0 = t1
-    if True: # iter_num % log_interval == 0:
+    if iter_num % log_interval == 0:
         lossf = loss.item() * num_steps
         print(f"iter {iter_num}: loss {lossf:.4f}, time {dt * 1000:.2f}ms")
     iter_num += 1
     local_iter_num += 1
 
-    # save checkpoints
     if iter_num % 10 == 0:
-        save_checkpoints(model,
-                     optimizer,
-                     model_args,
-                     iter_num,
-                     best_val_loss)
+        save_checkpoints(model, optimizer, model_args, iter_num, best_val_loss)
 
-    # stop training
     if iter_num > TConfig.max_iters:
         break
