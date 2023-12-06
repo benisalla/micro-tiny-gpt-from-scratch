@@ -99,3 +99,18 @@ def answer_me(context, question, model, tokenizer, device="cpu",
     answer = answer.split("<pad>")[0].strip()
 
     return answer
+
+
+def generate_text(model, tokenizer, prompt, device="cpu", num_samples=1, max_tokens=50, temp=1, top_k=100):
+    start_ids = tokenizer.encode(prompt)
+    x = (torch.tensor(start_ids, dtype=torch.long, device=device)[None, ...])
+
+    model.eval()
+    model.to(device)
+    #model = torch.compile(model)
+
+    # generate k sample
+    for k in range(num_samples):
+        print(f'sample num:[{k}]')
+        y = model.generate(x, max_tokens, temperature=temp, top_k=top_k)
+        print(tokenizer.decode(y[0].tolist()))

@@ -17,10 +17,10 @@ learning_rate = TConfig.learning_rate
 num_steps = TConfig.num_steps
 log_interval = TConfig.log_interval
 
-# start training
+# start fine-tuning ( it is better to fine tune a pretrained LLM)
 t0 = time.time()
 local_iter_num = 0
-model =  model.to(device)
+model = model.to(device)
 
 while True:
     train_loader.create_batches()
@@ -37,7 +37,7 @@ while True:
                                              isFT=True)
     for micro_step in range(num_steps):
         with ctx:
-            logits , loss = model(x_batch, y_batch)
+            logits, loss = model(x_batch, y_batch)
             loss = loss / num_steps
 
         x_batch, y_batch = next(train_loader)
@@ -52,7 +52,7 @@ while True:
     t0 = t1
     if iter_num % log_interval == 0:
         lossf = loss.item() * num_steps
-        print(f"iter {iter_num}: loss {lossf:.4f}, time {dt*1000:.2f}ms")
+        print(f"iter {iter_num}: loss {lossf:.4f}, time {dt * 1000:.2f}ms")
     iter_num += 1
     local_iter_num += 1
 
