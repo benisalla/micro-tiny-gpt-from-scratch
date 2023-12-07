@@ -301,11 +301,39 @@ I've created explanatory videos to help you understand the intricate link betwee
 ## Inference
 
 <div align="center">
-  <h4>some samples after training the model</h4>
+  <h4>Example 1</h4>
   <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/273406291-a362a3cf-3886-40d8-a1cc-71f448616a22.jpeg" width="700" height="300"/>
+</div>
+<div align="center">
+  <h4>Example 2</h4>
+  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/288919714-b1151a7c-f15e-46d1-b39b-7035cb864406.png" width="700" height="300"/>
+</div>
+<div align="center">
+  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/288919814-f2983df6-a849-49ef-9bba-e47b88266de2.png" width="700" height="300"/>
+</div>
+<div align="center">
+  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/288919922-62558357-7578-45e1-b762-18a9327f6890.png" width="700" height="300"/>
 </div>
 
 
+
+
+
+
+## fine tuning MT-GPT
+
+<div align="center">
+  <h4>Example 1</h4>
+  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/288918563-bd3fc6ca-d24d-4358-b5f8-22ce6afc09b8.jpeg" width="700" height="300"/>
+</div>
+<div align="center">
+  <h4>Example 2</h4>
+  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/288918548-b812b6e0-d3bf-4aea-8c89-370a4e79f7e2.jpeg" width="700" height="300"/>
+</div>
+<div align="center">
+  <h4>Example 3</h4>
+  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/288918495-a1bca43c-82f1-4322-ae98-18f76836aaab.jpeg" width="700" height="300"/>
+</div>
 
 
 
