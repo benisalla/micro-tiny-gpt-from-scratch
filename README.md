@@ -37,6 +37,7 @@ This is an important notice. It provides additional information or a reminder.
 - [Explanatory Videos](#explanatory)
 - [Training](#training)
 - [Inference](#inference)
+- [Fine Tuning](#fine)
 - [Contributors](#contributors)
 - [Contact Us](#contact-us)
 - [About Me](#about-me)
@@ -321,6 +322,8 @@ I've created explanatory videos to help you understand the intricate link betwee
 
 
 ## fine tuning MT-GPT
+
+  For detailed information, refer to the project [Fine-Tuning Pretrained GPT-2](https://github.com/benisalla/fine-tune-gpt2_on_context_Q-A), where GPT-2 has been fine-tuned specifically for context-question-answer scenarios.
 
 <div align="center">
   <h4>Example 1</h4>
