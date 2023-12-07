@@ -37,7 +37,7 @@ This is an important notice. It provides additional information or a reminder.
 - [Explanatory Videos](#explanatory)
 - [Training](#training)
 - [Inference](#inference)
-- [Fine Tuning](#fine)
+- [Fine Tuning](#fine-tuning-mt-gpt)
 - [Contributors](#contributors)
 - [Contact Us](#contact-us)
 - [About Me](#about-me)
