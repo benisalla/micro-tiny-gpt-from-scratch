@@ -120,6 +120,7 @@ class MTGPT(nn.Module):
         sd = model.state_dict()
         sd_keys = sd.keys()
         sd_keys = [k for k in sd_keys if not k.endswith('.attn.bias')]
+        sd_keys = [k for k in sd_keys if '.lora' not in k.lower()]
 
         # model configuration to which we add the special tokens
         pre_config = AutoConfig.from_pretrained('gpt2',
