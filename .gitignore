@@ -18,6 +18,3 @@ venv/
 # Ignore Visual Studio Code directory
 .vscode/
 
-# Ignore files and directories generated during training
-Model/__pycache__/
-Utils/__pycache__/
