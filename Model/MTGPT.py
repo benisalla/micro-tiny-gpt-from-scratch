@@ -100,7 +100,7 @@ class MTGPT(nn.Module):
         from transformers import GPT2LMHeadModel
 
         config_args = {
-            'openai-gpt':   dict(n_layer=12, n_head=12, n_embd=768),
+            'openai-gpt': dict(n_layer=12, n_head=12, n_embd=768),
             'gpt2': dict(n_layer=12, n_head=12, n_embd=768),
             'gpt2-medium': dict(n_layer=24, n_head=16, n_embd=1024),
             'gpt2-large': dict(n_layer=36, n_head=20, n_embd=1280),
