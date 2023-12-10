@@ -3,6 +3,8 @@ import torch
 from torch import nn
 from torch.nn import functional as F
 
+from LoRA.LoraLinear import LoraLinear
+
 
 class CausalSelfAttention(nn.Module):
     """
@@ -19,12 +21,23 @@ class CausalSelfAttention(nn.Module):
 
     def __init__(self, config):
         super().__init__()
-        assert config.n_embd % config.n_head == 0;
-        "n_embd % n_head should be 0."
-
-        self.mh_atten_ln = nn.Linear(config.n_embd, 3 * config.n_embd, bias=config.bias)
-
-        self.proj_ln = nn.Linear(config.n_embd, config.n_embd, bias=config.bias)
+        assert config.n_embd % config.n_head == 0; "n_embd % n_head should be 0."
+        """   
+            dropout ~= lora_dropout since Pre-Trained W is frozen
+            we can either introduce new dropout (lora_dropout) or use dropout
+        """
+        self.c_attn = LoraLinear(in_dim=config.n_embd,
+                                 out_dim=3 * config.n_embd,
+                                 bias=config.bias,
+                                 rank=config.rank,
+                                 lora_alpha=config.lora_alpha,
+                                 lora_drop_rate=config.lora_dropout)
+        self.c_proj = LoraLinear(in_dim=config.n_embd,
+                                 out_dim=config.n_embd,
+                                 bias=config.bias,
+                                 rank=config.rank,
+                                 lora_alpha=config.lora_alpha,
+                                 lora_drop_rate=config.lora_dropout)
 
         self.atten_drop = nn.Dropout(config.drop_rate)
         self.res_drop = nn.Dropout(config.drop_rate)

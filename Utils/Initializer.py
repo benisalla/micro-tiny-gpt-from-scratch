@@ -35,8 +35,8 @@ def Initializer():
 
     if init_from == 'scratch':
         model_args['vocab_size'] = vocab_size
-        gptconf = TConfig(**model_args)
-        model = MTGPT(gptconf)
+        config = TConfig(**model_args)
+        model = MTGPT(config)
 
     elif init_from == 'resume':
         checkpoint = None
@@ -48,8 +48,8 @@ def Initializer():
         checkpoint_model_args = checkpoint['model_args']
         for k in ['n_layer', 'n_head', 'n_embd', 'block_size', 'bias', 'vocab_size']:
             model_args[k] = checkpoint_model_args[k]
-        gptconf = TConfig(**model_args)
-        model = MTGPT(gptconf)
+        config = TConfig(**model_args)
+        model = MTGPT(config)
         state_dict = checkpoint['model']
 
         unwanted_prefix = '_orig_mod.'

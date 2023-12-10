@@ -14,9 +14,9 @@ class TConfig:
     n_layer: int = 2  # 12
     n_head: int = 12
     n_embd: int = 768
-    drop_rate: float = 0.0      # change to in fine-tuning 0.1 (prevent it from learning too much)
+    drop_rate: float = 0.0  # change to in fine-tuning 0.1 (prevent it from learning too much)
     bias: bool = True
-    learning_rate: float = 6e-4 # change this to 3e-5 in fine-tuning stage
+    learning_rate: float = 6e-4  # change this to 3e-5 in fine-tuning stage
     max_iters: int = 600000
     weight_decay: float = 1e-1
     beta1: float = 0.9
@@ -27,6 +27,11 @@ class TConfig:
     lr_decay_iters: int = 600000
     min_lr: float = 6e-5
     compile: bool = False
+
+    # for Mrs. LoRA
+    rank: int = 1
+    lora_alpha: float = 0.001
+    lora_dropout: float = 0.1
 
     # could be "scratch", "resume", "GPT2 family"
     init_from: str = "gpt2"

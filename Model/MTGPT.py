@@ -3,6 +3,8 @@ import math
 import torch
 import torch.nn as nn
 from torch.nn import functional as F
+
+from LoRA.LoraEmbedding import LoraEmbedding
 from Model.DBlock import DBlock
 from Model.LayerNorm import LayerNorm
 from transformers import AutoConfig
@@ -28,8 +30,10 @@ class MTGPT(nn.Module):
         self.config = config
 
         self.transformer = nn.ModuleDict(dict(
-            wte=nn.Embedding(config.vocab_size, config.n_embd),  # Embeddings
-            wpe=nn.Embedding(config.block_size, config.n_embd),  # positional encodings
+            wte=LoraEmbedding(num_embeddings=config.vocab_size,  # Embeddings
+                              embedding_dim=config.n_embd),
+            wpe=LoraEmbedding(num_embeddings=config.vocab_size,  # positional encodings
+                              embedding_dim=config.n_embd),
             drop=nn.Dropout(config.drop_rate),
             h=nn.ModuleList([DBlock(config) for _ in range(config.n_layer)]),  # Block X N
             ln_f=LayerNorm(config.n_embd, bias=config.bias),
