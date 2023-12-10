@@ -32,7 +32,7 @@ class MTGPT(nn.Module):
         self.transformer = nn.ModuleDict(dict(
             wte=LoraEmbedding(num_embeddings=config.vocab_size,  # Embeddings
                               embedding_dim=config.n_embd),
-            wpe=LoraEmbedding(num_embeddings=config.vocab_size,  # positional encodings
+            wpe=LoraEmbedding(num_embeddings=config.block_size,  # positional encodings
                               embedding_dim=config.n_embd),
             drop=nn.Dropout(config.drop_rate),
             h=nn.ModuleList([DBlock(config) for _ in range(config.n_layer)]),  # Block X N
