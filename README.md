@@ -9,9 +9,12 @@ This is our micro-tiny GPT model (😁 we are still learning), built from scratc
 
 
 
+
+
+
 <div align="center">
   <a href="https://drive.google.com/file/d/1QO3Is-Il5koQb8WpgAtzE-KWBa_E2Xsr/view?usp=sharing">
-    <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/289540495-9f0a679c-03ec-4356-af2b-f8fbca40248e.png" width="700" height="300" alt="Explanatory Video"/>
+    <img src="https://github.com/benisalla/micro-tiny-gpt-from-scratch/assets/89405673/ac9b010d-1612-4f28-8856-421062fe0175.png" width="700" height="300" alt="Explanatory Video"/>
   </a>
 </div>
 
