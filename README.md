@@ -7,6 +7,17 @@ This is our micro-tiny GPT model (😁 we are still learning), built from scratc
   <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/264447768-39a2a1a9-ca80-44cd-9d83-fd1358cb379b.png" width="200" height="200" />
 </div>
 
+
+
+<div align="center">
+  <a href="https://drive.google.com/file/d/1QO3Is-Il5koQb8WpgAtzE-KWBa_E2Xsr/view?usp=sharing">
+    <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/289540495-9f0a679c-03ec-4356-af2b-f8fbca40248e.png" width="700" height="300" alt="Explanatory Video"/>
+  </a>
+</div>
+
+
+
+
 ## NOTE
 
 **Important:** This project involves fine-tuning various GPT family models (small, medium, large, etc.) to develop two distinct chatbots: one for question and answer interactions [here](https://github.com/benisalla/fine-tune-GPT-chatbot) and another for context-based question and answer interactions [here](https://github.com/benisalla/fine-tune-gpt2_on_context_Q-A). Additionally, we have implemented a question and answer system based on the core transformer architecture which was initially used for translation tasks [here](https://github.com/benisalla/chatbot-based-translation-transformer).
@@ -280,6 +291,7 @@ I've created explanatory videos to help you understand the intricate link betwee
     <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/89405673/288115000-0db1ec7c-06a9-4801-8ae0-900b2c0382e2.png" width="700" height="300" alt="Explanatory Video"/>
   </a>
 </div>
+
 
 
 
